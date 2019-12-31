@@ -1,0 +1,128 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color white, 2, true )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu1"
+					"text": "Menu"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "itemNew"
+						"text": "NEW GAME"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "itemNewActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+						name: "separator1"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "ItemLoad"
+						"text": "CONTINUES"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ItemLoadActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+						name: "separator2"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "ItemPlayer"
+						"text": "PLAYER"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ItemPlayerActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+						name: "separator3"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "ItemExist"
+						"text": "EXIST"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ItemExistActionPerformed", true ) )
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSave"
+					"text": "Save"
+					"focusable": false
+					"borderPainted": false
+					"contentAreaFilled": false
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSaveActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnAbout"
+					"text": "About"
+					"focusable": false
+					"borderPainted": false
+					"contentAreaFilled": false
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAboutActionPerformed", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 700
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnNewGame"
+				"text": "New Game"
+				"font": &Font0 new java.awt.Font( "Viner Hand ITC", 1, 28 )
+				"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color white, 3, true )
+				"foreground": sfield java.awt.Color white
+				"background": &Color0 new java.awt.Color( 61, 150, 164, 255 )
+				"focusable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnNewGameActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 215
+				"height": 70
+				"x": 245
+				"y": 70
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnContinues"
+				"text": "Continues"
+				"font": #Font0
+				"border": #LineBorder0
+				"foreground": sfield java.awt.Color white
+				"background": #Color0
+				"focusable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnContinuesActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 215
+				"height": 70
+				"x": 245
+				"y": 160
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnPlayer"
+				"text": "Player"
+				"font": #Font0
+				"border": #LineBorder0
+				"foreground": sfield java.awt.Color white
+				"background": #Color0
+				"focusable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnPlayerActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 215
+				"height": 70
+				"x": 245
+				"y": 255
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnExist"
+				"text": "Exist"
+				"font": #Font0
+				"border": #LineBorder0
+				"foreground": sfield java.awt.Color white
+				"background": #Color0
+				"focusable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExistActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 215
+				"height": 70
+				"x": 245
+				"y": 350
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 700, 500 )
+		} )
+	}
+}
