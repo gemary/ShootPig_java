@@ -6,7 +6,7 @@ package GUI;
 
 import GUI.Intro.IntroPanel;
 import GUI.Menu.MenuPanel;
-import core.Constain.ConstainGame;
+import core.Constain.GameDefine;
 
 import java.awt.*;
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class MainForm extends JFrame {
         setTitle(String.valueOf(INTRO));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(new IntroPanel());
-        setPreferredSize(new Dimension(ConstainGame.getInstance().getS_WIDTH(),ConstainGame.getInstance().getS_HEIGHT()));
+        setPreferredSize(new Dimension(GameDefine.SCREEN_WIDTH,GameDefine.SCREEN_HEIGHT));
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();

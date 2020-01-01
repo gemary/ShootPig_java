@@ -1,6 +1,6 @@
 package core.InitGame;
 
-import core.Constain.ConstainGame;
+import core.Constain.GameDefine;
 
 public class Missile extends Sprite {
 
@@ -14,8 +14,8 @@ public class Missile extends Sprite {
         getImageDimensions();
     }
     void move(){
-        y -= ConstainGame.getInstance().getMISSILE_SPEED();
-        if (y > ConstainGame.getInstance().getB_WIDTH()){
+        y -= GameDefine.MISSILE_SPEED;
+        if (y > GameDefine.B_WIDTH){
             setVisible(false);
         }
     }

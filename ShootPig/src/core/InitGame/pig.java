@@ -1,6 +1,6 @@
 package core.InitGame;
 
-import core.Constain.ConstainGame;
+import core.Constain.GameDefine;
 
 public class pig extends Sprite {
     public pig(int x, int y) {
@@ -13,14 +13,17 @@ public class pig extends Sprite {
     }
     void  move(){
 
-        if (y < ConstainGame.getInstance().getB_WIDTH() && x < ConstainGame.getInstance().getB_HEIGHT() && x >0 && y>0)
+        if (y <  GameDefine.B_HEIGHT && y>0)
         {
-            y+=2;
-           // x-=2;
+            y+=1;
+
         }
-        else {
-            y= (int) Math.round(Math.random()*ConstainGame.getInstance().getB_HEIGHT()/2) ;
-            x=  ConstainGame.getInstance().getB_WIDTH();
+        if (y == GameDefine.B_HEIGHT){
+
+            x+= GameDefine.B_WIDTH -x > x ? 1: -1;
+
         }
+
+
     }
 }
