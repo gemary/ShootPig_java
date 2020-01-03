@@ -4,9 +4,11 @@
 
 package GUI.Menu;
 
-import GUI.MainForm;
 import GUI.Player.PlayerPanel;
+import core.Constain.GameDefine;
+import core.Gson.GsonManager;
 import core.InitGame.SwingTimerEx;
+import core.Player;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,9 +26,15 @@ public class MenuPanel extends JPanel {
     }
 
     private void btnPlayerActionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("PLAYER");
-        frame.add(new PlayerPanel());
-        frame.setVisible(true);
+        PlayerPanel view = new PlayerPanel();
+        int option = JOptionPane.showConfirmDialog(this,view.getRootPanel(),"Player",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if (option == JOptionPane.YES_OPTION){
+            GsonManager gsonManager = new GsonManager();
+            Player player = gsonManager.ParseGsonToObject(gsonManager.ReadText(GameDefine.fileName));
+
+            player.setSpaceShip( view.getResourceSelected());
+            gsonManager.save(GameDefine.fileName,player);
+        }
     }
 
     private void btnExistActionPerformed(ActionEvent e) {
@@ -59,13 +67,21 @@ public class MenuPanel extends JPanel {
 
     private void btnNewGameActionPerformed(ActionEvent e) {
         EventQueue.invokeLater(()->{
-            SwingTimerEx ex = new SwingTimerEx();
+            Player player = new Player();
+            SwingTimerEx ex = new SwingTimerEx(player);
             ex.setVisible(true);
         });
     }
 
     private void btnContinuesActionPerformed(ActionEvent e) {
-        // TODO add your code here
+
+        EventQueue.invokeLater(()->{
+            GsonManager gsonManager = new GsonManager();
+            String JsonString = gsonManager.ReadText(GameDefine.fileName);
+            Player player =gsonManager.ParseGsonToObject(JsonString);
+            SwingTimerEx ex = new SwingTimerEx(player);
+            ex.setVisible(true);
+        });
     }
 
     private void initComponents() {

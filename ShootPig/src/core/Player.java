@@ -1,16 +1,23 @@
 package core;
 
 public class Player {
-    private String playerName;
+
     private double BestScore;
     private double CurrentScore;
-    private String SpaceShip;
+    private String SpaceShip ="ShootPig/Asset/Image/bigGun.png";
 
     public Player(){
 
     }
-    public Player(String playerName,  double BestScore,double CurrentScore,String SpaceShip){
-        this.playerName =playerName;
+    public Player( double BestScore,double CurrentScore){
+
+        this.BestScore=BestScore;
+        this.CurrentScore =CurrentScore;
+
+    }
+
+    public Player( double BestScore,double CurrentScore,String SpaceShip){
+
         this.BestScore=BestScore;
         this.CurrentScore =CurrentScore;
         this.SpaceShip = SpaceShip;
@@ -24,9 +31,7 @@ public class Player {
         return CurrentScore;
     }
 
-    public String getPlayerName() {
-        return playerName;
-    }
+
 
     public String getSpaceShip() {
         return SpaceShip;
@@ -40,9 +45,7 @@ public class Player {
         CurrentScore = currentScore;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
+
 
     public void setSpaceShip(String spaceShip) {
         SpaceShip = spaceShip;

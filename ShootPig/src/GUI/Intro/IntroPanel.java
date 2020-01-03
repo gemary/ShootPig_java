@@ -34,12 +34,12 @@ public class IntroPanel extends JPanel {
 
         //---- label1 ----
         label1.setText("Shoot Pigs");
-        label1.setFont(new Font("Vivaldi", Font.BOLD, 72));
+        label1.setFont(new Font("Vivaldi", Font.BOLD, 62));
         add(label1);
         label1.setBounds(115, 215, 360, label1.getPreferredSize().height);
 
         //---- label2 ----
-        label2.setIcon(new ImageIcon("Asset/Image/pig.png"));
+        label2.setIcon(new ImageIcon("ShootPig/Asset/Image/pig.png"));
         add(label2);
         label2.setBounds(new Rectangle(new Point(510, 150), label2.getPreferredSize()));
 
@@ -57,7 +57,7 @@ public class IntroPanel extends JPanel {
             setMinimumSize(preferredSize);
             setPreferredSize(preferredSize);
         }
-
+        setLayout(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

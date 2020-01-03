@@ -22,13 +22,19 @@ public class Sprite {
         image = ii.getImage();
     }
     protected void getImageDimensions() {
-
         width = image.getWidth(null);
         height = image.getHeight(null);
     }
 
+    public void setImage(String image) {
+        ImageIcon ii = new ImageIcon(image);
+        width = ii.getImage().getWidth(null);
+        height = ii.getImage().getHeight(null);
+        this.image = ii.getImage();
+    }
+
     public Image getImage() {
-        return image;
+        return this.image;
     }
 
     public int getY() {
