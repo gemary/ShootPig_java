@@ -26,6 +26,61 @@ public class MenuPanel extends JPanel {
     }
 
     private void btnPlayerActionPerformed(ActionEvent e) {
+       playerScreen();
+    }
+
+    private void btnExistActionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
+
+    private void itemNewActionPerformed(ActionEvent e) {
+             newGame();
+    }
+
+    private void ItemLoadActionPerformed(ActionEvent e) {
+            continuesGame();
+    }
+
+    private void ItemPlayerActionPerformed(ActionEvent e) {
+        playerScreen();
+    }
+
+    private void ItemExistActionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
+
+
+
+    private void btnAboutActionPerformed(ActionEvent e) {
+       JOptionPane.showMessageDialog(null,"Game Make by DTD98 ^_^");
+    }
+
+    private void btnNewGameActionPerformed(ActionEvent e) {
+        newGame();
+    }
+
+    private void btnContinuesActionPerformed(ActionEvent e) {
+        continuesGame();
+
+    }
+
+    void newGame(){
+        EventQueue.invokeLater(()->{
+            Player player = new Player();
+            SwingTimerEx ex = new SwingTimerEx(player);
+            ex.setVisible(true);
+        });
+    }
+    void continuesGame(){
+        EventQueue.invokeLater(()->{
+            GsonManager gsonManager = new GsonManager();
+            String JsonString = gsonManager.ReadText(GameDefine.fileName);
+            Player player =gsonManager.ParseGsonToObject(JsonString);
+            SwingTimerEx ex = new SwingTimerEx(player);
+            ex.setVisible(true);
+        });
+    }
+    void playerScreen(){
         PlayerPanel view = new PlayerPanel();
         int option = JOptionPane.showConfirmDialog(this,view.getRootPanel(),"Player",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
         if (option == JOptionPane.YES_OPTION){
@@ -36,54 +91,6 @@ public class MenuPanel extends JPanel {
             gsonManager.save(GameDefine.fileName,player);
         }
     }
-
-    private void btnExistActionPerformed(ActionEvent e) {
-        System.exit(0);
-    }
-
-    private void itemNewActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void ItemLoadActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void ItemPlayerActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void ItemExistActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void btnSaveActionPerformed(ActionEvent e) {
-
-    }
-
-    private void btnAboutActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void btnNewGameActionPerformed(ActionEvent e) {
-        EventQueue.invokeLater(()->{
-            Player player = new Player();
-            SwingTimerEx ex = new SwingTimerEx(player);
-            ex.setVisible(true);
-        });
-    }
-
-    private void btnContinuesActionPerformed(ActionEvent e) {
-
-        EventQueue.invokeLater(()->{
-            GsonManager gsonManager = new GsonManager();
-            String JsonString = gsonManager.ReadText(GameDefine.fileName);
-            Player player =gsonManager.ParseGsonToObject(JsonString);
-            SwingTimerEx ex = new SwingTimerEx(player);
-            ex.setVisible(true);
-        });
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - duc
@@ -138,12 +145,9 @@ public class MenuPanel extends JPanel {
             menuBar1.add(menu1);
 
             //---- btnSave ----
-            btnSave.setText("Save");
-            btnSave.setFocusable(false);
-            btnSave.setBorderPainted(false);
-            btnSave.setContentAreaFilled(false);
-            btnSave.addActionListener(e -> btnSaveActionPerformed(e));
-            menuBar1.add(btnSave);
+
+
+
 
             //---- btnAbout ----
             btnAbout.setText("About");

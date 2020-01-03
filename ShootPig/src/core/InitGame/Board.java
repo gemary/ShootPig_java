@@ -34,7 +34,7 @@ public class Board extends JPanel implements ActionListener {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                spaceShip.fire();
+                spaceShip.fire(e);
             }
 
             @Override
@@ -95,9 +95,10 @@ public class Board extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
     private void drawPoint(Graphics g){
+        g.setFont(  new Font("Arial", Font.BOLD, 28));
         g.setColor(Color.RED);
-        g.drawString("Best Score: "+BestPoint,10,10);
-        g.drawString("Current Score :"+CurrentPoint,10,30);
+        g.drawString("Best Score: "+BestPoint,10,30);
+        g.drawString("Current Score :"+CurrentPoint,10,60);
 
     }
     private void drawPigAndBullets(Graphics g) {
@@ -118,16 +119,20 @@ public class Board extends JPanel implements ActionListener {
     }
     private  void drawGun(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
-       // g2d.rotate(30,spaceShip.getX(),spaceShip.getY());
-        g2d.drawImage(spaceShip.getImage(), spaceShip.getX(), spaceShip.getY(), this);
+        g2d.drawImage(spaceShip.getImage(), spaceShip.getX(),spaceShip.getY(), this);
 
 
     }
     private void drawbackGround(Graphics g) {
+        g.setFont(  new Font("Arial", Font.BOLD, 32));
+        g.setColor(Color.RED);
+        g.drawString("Best Score: "+BestPoint,10,10);
+        g.drawString("Current Score :"+CurrentPoint,10,60);
         g.drawImage(background,0,0, GameDefine.B_WIDTH,GameDefine.B_HEIGHT,this);
     }
     private void drawGameOver(Graphics g) {
         g.setColor(Color.RED);
+        g.setFont( new Font("Arial", Font.BOLD, 62));
         g.drawString("Game Over !",GameDefine.B_WIDTH/2,GameDefine.B_HEIGHT/2);
         GsonManager gsonManager = new GsonManager();
         if (CurrentPoint > BestPoint){

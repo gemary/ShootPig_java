@@ -4,19 +4,24 @@ import core.Constain.GameDefine;
 
 public class Missile extends Sprite {
 
-    public Missile(int x, int y) {
-        super(x, y);
-        initMissile();
-    }
+    public Missile(int x, int y,double angle) {
 
-    int INIT_PIG_SIZE =15;
-    private void initMissile() {
+        super(x, y);
+        initMissile(angle);
+    }
+    private  double angle;
+    private int INIT_PIG_SIZE =15;
+    private void initMissile(double angle) {
+        this.angle =angle;
         loadImage("ShootPig/Asset/Image/bullet.png");
         getImageDimensions();
 
     }
     void move(){
-        y -= GameDefine.MISSILE_SPEED;
+        double speedX =  GameDefine.MISSILE_SPEED * Math.cos(angle);
+        double speedY =  GameDefine.MISSILE_SPEED*Math.sin(angle);
+        y += speedY;
+        x+=speedX;
         if (y <750) {
             INIT_PIG_SIZE=12;
         }
