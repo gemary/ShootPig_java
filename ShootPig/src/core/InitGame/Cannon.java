@@ -11,7 +11,7 @@ public class Cannon extends Sprite{
 
     private List<Missile> missiles;
     private   double angle;
-
+    int x2,y2;
     public Cannon(int x, int y,String Image) {
         super(x, y);
         initSpaceShip(Image);
@@ -20,9 +20,9 @@ public class Cannon extends Sprite{
     private void initSpaceShip(String image) {
         missiles = new ArrayList<>();
         setImage(image);
-
+        getImageDimensions();
         x = GameDefine.B_WIDTH/2;
-        y = GameDefine.B_HEIGHT-width*3;
+        y = GameDefine.B_HEIGHT-height*3;
     }
     public List<Missile> getMissiles() {
         return missiles;
@@ -32,11 +32,16 @@ public class Cannon extends Sprite{
         missiles.add(new Missile(x, y-height,angle ));
     }
     public void move(MouseEvent e){
-        angle =Math.atan2(e.getY() - y,e.getX() - x);
-//        double speedX = 2 * Math.cos(angle);
-//        double speedY = 2*Math.sin(angle);
-//        x = (int) speedX;
-//        y= (int) speedY;
+        x2 =e.getX();
+        y2=e.getY();
+    }
+
+    public int getX2() {
+        return x2;
+    }
+
+    public int getY2() {
+        return y2;
     }
 
     public double getAngle() {

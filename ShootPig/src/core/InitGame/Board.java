@@ -20,6 +20,7 @@ public class Board extends JPanel implements ActionListener {
     private double CurrentPoint =0;
     private double BestPoint;
     private Player player;
+    private boolean key= true;
     public Board(Player player){
         this.player= player;
         InitBoard();
@@ -27,9 +28,9 @@ public class Board extends JPanel implements ActionListener {
 
     private void InitBoard( ) {
         BestPoint =player.getBestScore();
-        ImageIcon backg =new ImageIcon("ShootPig/Asset/Image/background.jpg");
+        ImageIcon backg =new ImageIcon("ShootPig/Asset/Image/background.png");
         background =backg.getImage();
-        initPig();
+        initPig(5);
         spaceShip = new Cannon(GameDefine.B_WIDTH/2,0,player.getSpaceShip());
         addMouseListener(new MouseListener() {
             @Override
@@ -69,13 +70,13 @@ public class Board extends JPanel implements ActionListener {
         timer.start();
     }
 
-    void initPig(){
+    void initPig(int number){
         pislist = new ArrayList<>();
         int count =0;
-        while (count < 10){
+        while (count < number){
             int x = (int) Math.round(Math.random() *GameDefine.B_WIDTH);
             int y = 1;
-            pislist.add(new pig(x,y));
+            pislist.add(new pig(x,y, (int) Math.round(Math.random() *( 3-1) )+1));
             count++;
         }
     }
@@ -119,6 +120,7 @@ public class Board extends JPanel implements ActionListener {
     }
     private  void drawGun(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
+        g2d.drawLine( GameDefine.B_WIDTH/2, GameDefine.B_HEIGHT-spaceShip.width*3,spaceShip.getX2(),spaceShip.getY2());
         g2d.drawImage(spaceShip.getImage(), spaceShip.getX(),spaceShip.getY(), this);
 
 
@@ -133,7 +135,7 @@ public class Board extends JPanel implements ActionListener {
     private void drawGameOver(Graphics g) {
         g.setColor(Color.RED);
         g.setFont( new Font("Arial", Font.BOLD, 62));
-        g.drawString("Game Over !",GameDefine.B_WIDTH/2,GameDefine.B_HEIGHT/2);
+        g.drawString("Game Over !",GameDefine.B_WIDTH/3,GameDefine.B_HEIGHT/2);
         GsonManager gsonManager = new GsonManager();
         if (CurrentPoint > BestPoint){
             BestPoint = CurrentPoint;
@@ -152,10 +154,21 @@ public class Board extends JPanel implements ActionListener {
 
     void  updatePig(){
         if(pislist.isEmpty()){
-            initPig();
+            key =true;
+            initPig((int) Math.round(Math.random() * (10-5) +5));
+        }
+        if ( CurrentPoint > 50 && key){
+            key =false;
+
+            initPig((int) Math.round(Math.random() * (20-10) +10));
+        }
+        if ( CurrentPoint > 100 && key){
+            key =false;
+            initPig((int) Math.round(Math.random() *  (40-20) +20));
         }
         for(int i = 0 ; i < pislist.size();i++){
            pig p = pislist.get(i);
+
            if (p.visible){
                p.move();
            }

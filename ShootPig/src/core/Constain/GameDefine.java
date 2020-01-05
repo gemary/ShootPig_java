@@ -10,5 +10,5 @@ public interface GameDefine {
     int SCREEN_HEIGHT = 500;
     int  B_WIDTH =screenSize.width;
     int B_HEIGHT = screenSize.height;
-    int MISSILE_SPEED = 5;
+    int MISSILE_SPEED = 15;
 }

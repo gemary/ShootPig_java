@@ -4,7 +4,7 @@ public class Player {
 
     private double BestScore;
     private double CurrentScore;
-    private String SpaceShip ="ShootPig/Asset/Image/bigGun.png";
+    private String SpaceShip ="ShootPig/Asset/template/bigGun.png";
 
     public Player(){
 

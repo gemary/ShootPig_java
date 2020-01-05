@@ -3,13 +3,15 @@ package core.InitGame;
 import core.Constain.GameDefine;
 
 public class pig extends Sprite {
-    public pig(int x, int y) {
+    public pig(int x, int y,int Speed) {
         super(x, y);
-        InitPit();
+        InitPit(Speed);
     }
+    int SPEED ;
     int Point =0;
     int INIT_PIG_SIZE =5;
-    void  InitPit(){
+    void  InitPit(int Speed){
+        this.SPEED = Speed;
         loadImage("ShootPig/Asset/Image/pig1.png");
         getImageDimensions();
     }
@@ -19,27 +21,27 @@ public class pig extends Sprite {
     }
 
     void  move(){
-        switch (y){
-            case 100: INIT_PIG_SIZE =6 ; Point =10; break;
-            case 150: INIT_PIG_SIZE =8;  Point =9; break;
-            case 200: INIT_PIG_SIZE =10;  Point =8;break;
-            case 250: INIT_PIG_SIZE =12;  Point =7;break;
-            case 300: INIT_PIG_SIZE =14; Point =6;break;
-            case 350: INIT_PIG_SIZE =16;Point =5; break;
-            case 440: INIT_PIG_SIZE=18; Point =4;break;
-            case 540: INIT_PIG_SIZE=20; Point =3;break;
-            case 600: INIT_PIG_SIZE=25;Point =2; break;
-            case 650: INIT_PIG_SIZE=30;Point =1; break;
-        }
+        if (y >100) { INIT_PIG_SIZE=10;Point =10; }
+        if (y >150) { INIT_PIG_SIZE=12;Point =9; }
+        if (y >200) { INIT_PIG_SIZE=14;Point =8; }
+        if (y >250) { INIT_PIG_SIZE=16;Point =7; }
+        if (y >300) { INIT_PIG_SIZE=18;Point =6; }
+        if (y >350) { INIT_PIG_SIZE=20;Point =5; }
+        if (y >440) { INIT_PIG_SIZE=22;Point =4; }
+        if (y >540) { INIT_PIG_SIZE=24;Point =3; }
+        if (y >600) { INIT_PIG_SIZE=26;Point =2; }
+        if (y >650) { INIT_PIG_SIZE=28;Point =1; }
         width =INIT_PIG_SIZE;
         height=INIT_PIG_SIZE;
         if (y <  GameDefine.B_HEIGHT && y>0)
         {
-            y+=1;
+            y+=SPEED;
         }
 
-        if (y == GameDefine.B_HEIGHT -80){
-            y-=1;
+        if (  y >= GameDefine.B_HEIGHT -80){
+            getImageDimensions();
+
+            y-=SPEED;
             x+= GameDefine.B_WIDTH -x > x ? 1: -1;
 
         }
